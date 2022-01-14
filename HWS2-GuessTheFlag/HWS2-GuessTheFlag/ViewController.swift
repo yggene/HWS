@@ -21,6 +21,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(scoreButtonTapped))
+        
         button1.layer.borderWidth = 1
         button2.layer.borderWidth = 1
         button3.layer.borderWidth = 1
@@ -61,6 +63,14 @@ class ViewController: UIViewController {
         ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
         present(ac, animated: true)
         
+    }
+    
+    @objc func scoreButtonTapped() {
+        let scoreButtonTitle = "Current score"
+        let scoreButtonMessage = "Your current score is \(score)"
+        let scoreAC = UIAlertController(title: scoreButtonTitle, message: scoreButtonMessage, preferredStyle: .alert)
+        scoreAC.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
+        present(scoreAC, animated: true)
     }
     
     override func didReceiveMemoryWarning() {

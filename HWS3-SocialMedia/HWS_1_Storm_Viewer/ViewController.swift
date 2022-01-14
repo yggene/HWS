@@ -16,8 +16,6 @@ class ViewController: UITableViewController {
         
         title = "Storm Viewer"
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
-        
         let fm = FileManager.default
         let path = Bundle.main.resourcePath!
         let items = try! fm.contentsOfDirectory(atPath: path)
@@ -54,16 +52,5 @@ class ViewController: UITableViewController {
         }
     }
     
-    @objc func shareTapped() {
-        
-        if let url = NSURL(string: "https://appstorelink.com") {
-            let shareText = "Try this awesome app!"
-            let objectsToShare: [Any] = [shareText, url]
-            let vc = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-            vc.excludedActivityTypes = [UIActivity.ActivityType.addToReadingList]
-            vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
-            present(vc, animated: true)
-        }
-    }
 }
 
